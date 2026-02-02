@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | AzureReel Studios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Rajdhani:wght@300;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azure: #00d2ff;
+            --dark-bg: #050505;
+            --glass: rgba(20, 20, 20, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-links a.active { color: var(--azure); }
+
+        /* --- CONTACT SECTION --- */
+        .contact-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .contact-container {
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            background: var(--glass);
+            border: 1px solid #222;
+            backdrop-filter: blur(15px);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #001f3f, #000);
+            padding: 3rem;
+            border-right: 1px solid #222;
+        }
+
+        .contact-info h2 {
+            font-family: 'Orbitron';
+            margin-bottom: 2rem;
+            color: var(--azure);
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--azure);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- FORM STYLING --- */
+        .contact-form {
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #333;
+            color: #fff;
+            font-family: 'Rajdhani';
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--azure);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .send-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--azure);
+            border: none;
+            font-family: 'Orbitron';
+            font-weight: 900;
+            cursor: pointer;
+            transition: 0.4s;
+            clip-path: polygon(5% 0, 100% 0, 100% 70%, 95% 100%, 0 100%, 0 30%);
+        }
+
+        .send-btn:hover {
+            background: #fff;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 850px) {
+            .contact-container { grid-template-columns: 1fr; }
+            .contact-info { border-right: none; border-bottom: 1px solid #222; }
+            nav { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">AZURE REEL</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="characters.html">Characters</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+    </nav>
+
+    <div class="contact-wrapper">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>UPLINK</h2>
+                <div class="contact-item">
+                    <label>Inquiries</label>
+                    <p>hello@azurereel.studio</p>
+                </div>
+                <div class="contact-item">
+                    <label>Social</label>
+                    <p>Twitter / X<br>Instagram<br>YouTube</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="NAME / ENTITY" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="EMAIL_ADDRESS" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="MESSAGE_TRANSMISSION" required></textarea>
+                    </div>
+                    <button type="submit" class="send-btn">SEND_SIGNAL</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 2rem; color: #222; font-size: 0.8rem;">
+        &copy; 2026 AZUREREEL_SYSTEMS // SECURE CONNECTION
+    </footer>
+
+</body>
+</html>

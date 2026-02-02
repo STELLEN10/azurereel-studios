@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AzureReel | Forging Worlds</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS RESET & VARIABLES --- */
+        :root {
+            --azure-glow: #00d2ff;
+            --dark-bg: #050505;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            overflow: hidden; /* Prevents scrolling on the landing page for maximum impact */
+            height: 100vh;
+        }
+
+        /* --- 3D CANVAS --- */
+        #bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* --- UI LAYER (Sits on top of 3D) --- */
+        .ui-layer {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: radial-gradient(circle at center, transparent 0%, #000000 120%); /* Vignette effect */
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--white);
+            text-shadow: 0 0 15px var(--azure-glow);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--azure-glow);
+            text-shadow: 0 0 8px var(--azure-glow);
+        }
+
+        /* --- HERO CONTENT --- */
+        .hero-content {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1rem;
+            opacity: 0; /* Hidden for animation */
+            animation: fadeInUp 1.5s ease forwards 0.5s;
+        }
+
+        h1 span {
+            color: var(--azure-glow);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 3rem;
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 0.8s;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 1.1s;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--azure-glow);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+
+        .btn-primary {
+            background: var(--azure-glow);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--azure-glow);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .btn-primary:hover {
+            background: #fff;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 210, 255, 0.1);
+            color: #fff;
+        }
+
+        /* --- FOOTER / SCROLL INDICATOR --- */
+        .footer-bar {
+            text-align: center;
+            padding-bottom: 2rem;
+            font-size: 0.8rem;
+            color: #555;
+            letter-spacing: 2px;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .nav-menu { display: none; } /* Simplified for mobile */
+            .btn-group { flex-direction: column; gap: 1rem; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="ui-layer">
+        
+        <nav>
+            <a href="index.html" class="logo">AZURE REEL</a>
+            <div class="nav-menu">
+                <a href="about.html" class="nav-link">About</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="characters.html" class="nav-link">Characters</a>
+                <a href="contact.html">Contact</a>
+                <a href="careers.html" class="nav-link" style="color: var(--azure-glow);">Join Us</a>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <h1>Forging <span>Worlds</span><br>From Ashes</h1>
+            <p class="tagline">IMMERSIVE STORIES. NEXT-GEN ANIMATION.</p>
+            
+            <div class="btn-group">
+                <a href="projects.html" class="btn btn-primary">Explore Work</a>
+                <a href="careers.html" class="btn btn-secondary">Join The 120</a>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+            EST. DECEMBER // PHOENIX CITY PILOT AVAILABLE
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.querySelector('#bg-canvas');
+        const scene = new THREE.Scene();
+        // Fog adds depth and fades particles in the distance
+        scene.fog = new THREE.FogExp2(0x050505, 0.002); 
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // --- PARTICLE TUNNEL EFFECT ---
+        const geometry = new THREE.BufferGeometry();
+        const count = 4000;
+        const posArray = new Float32Array(count * 3);
+        const velocityArray = new Float32Array(count); // Speed of each particle
+
+        for(let i = 0; i < count * 3; i+=3) {
+            // Spread particles wide (x, y) but deep in Z
+            posArray[i] = (Math.random() - 0.5) * 50;   // X
+            posArray[i+1] = (Math.random() - 0.5) * 50; // Y
+            posArray[i+2] = (Math.random() - 0.5) * 100; // Z depth
+            
+            // Random speed for each particle index
+            velocityArray[i/3] = Math.random() * 0.2 + 0.05;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        // Create a custom texture looking like a soft spark/ash
+        const material = new THREE.PointsMaterial({
+            size: 0.15,
+            color: 0x00d2ff,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending, // Makes overlapping particles glow
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        camera.position.z = 5;
+
+        // --- MOUSE MOVEMENT INTERACTION ---
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX - window.innerWidth / 2;
+            mouseY = event.clientY - window.innerHeight / 2;
+        });
+
+        // --- ANIMATION LOOP ---
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Get positions array
+            const positions = particles.geometry.attributes.position.array;
+
+            for(let i = 0; i < count; i++) {
+                // Move particle towards camera (Z axis)
+                // i*3 + 2 is the Z coordinate
+                positions[i*3 + 2] += 0.2; // Speed of tunnel
+
+                // If particle passes camera, reset it to the back
+                if(positions[i*3 + 2] > 5) {
+                    positions[i*3 + 2] = -50;
+                }
+            }
+            
+            // Update the geometry with new positions
+            particles.geometry.attributes.position.needsUpdate = true;
+
+            // Gentle rotation based on mouse
+            particles.rotation.y = mouseX * 0.0001;
+            particles.rotation.x = mouseY * 0.0001;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+
+        // Resize Handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

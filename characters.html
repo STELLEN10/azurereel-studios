@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters | Game of Ashes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Rajdhani:wght@300;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azure: #00d2ff;
+            --dark: #050505;
+            --panel-bg: rgba(10, 10, 10, 0.95);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--dark);
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-links a.active { color: var(--azure); }
+
+        /* --- CHARACTER SELECTION AREA --- */
+        .dossier-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 2rem;
+            min-height: 80vh;
+        }
+
+        .char-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .char-thumb {
+            width: 150px;
+            height: 200px;
+            background: #111;
+            border: 2px solid #333;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .char-thumb:hover {
+            border-color: var(--azure);
+            transform: scale(1.05);
+        }
+
+        .char-thumb.selected {
+            border-color: var(--azure);
+            box-shadow: 0 0 20px var(--azure);
+        }
+
+        /* --- INFO DISPLAY (The Pop-up/Slide) --- */
+        .display-area {
+            display: none; /* Hidden until clicked */
+            width: 100%;
+            max-width: 1000px;
+            background: var(--panel-bg);
+            border: 1px solid var(--azure);
+            padding: 3rem;
+            display: flex;
+            gap: 4rem;
+            animation: slideUp 0.6s ease-out;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        /* Floating Animation for the Main Character Image */
+        .char-portrait-large {
+            flex: 1;
+            max-width: 350px;
+            height: 450px;
+            background: linear-gradient(45deg, #111, #222);
+            border: 1px solid var(--azure);
+            animation: float 4s ease-in-out infinite; /* THE FLOATING EFFECT */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron';
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        .char-info-text {
+            flex: 2;
+        }
+
+        .char-info-text h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--azure);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .char-tagline {
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: #aaa;
+        }
+
+        .char-bio {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .sub-plot-box {
+            background: rgba(0, 210, 255, 0.05);
+            padding: 1.5rem;
+            border-left: 4px solid var(--azure);
+        }
+
+        .sub-plot-box h4 {
+            color: var(--azure);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- KEYFRAMES --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hide logic */
+        .hidden { display: none !important; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="landing.html" class="logo">AZURE REEL</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="characters.html" class="active">Characters</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="dossier-container">
+        <h1 style="font-family: 'Orbitron'; margin-bottom: 2rem;">CHARACTER_ARCHIVE</h1>
+        
+        <div class="char-grid">
+            <div class="char-thumb" onclick="showChar('noi')">NOI</div>
+            <div class="char-thumb" onclick="showChar('zico.jpg')">ZICO</div>
+            <div class="char-thumb" onclick="showChar('zari')">ZARI</div>
+            <div class="char-thumb" onclick="showChar('falia')">FALIA</div>
+            <div class="char-thumb" onclick="showChar('daffy')">DAFFY</div>
+        </div>
+
+        <div id="info-panel" class="display-area hidden">
+            <div class="char-portrait-large" id="char-image">
+                [IMG_RENDER]
+            </div>
+            
+            <div class="char-info-text">
+                <h2 id="char-name">NAME</h2>
+                <p class="char-tagline" id="char-tag">TAGLINE_DATA</p>
+                <div class="char-bio" id="char-bio">
+                    Detailed bio will appear here.
+                </div>
+                <div class="sub-plot-box">
+                    <h4>SUB-PLOT DATA</h4>
+                    <p id="char-subplot">Plot details restricted...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const charData = {
+            noi: {
+                name: "Noi Everdeen",
+                tag: "THE NEWCOMER / 16",
+                bio: "Arriving in Phoenix City, Noi is immediately struck by the battered streets and the eerie silence. Curious and resilient, he must balance his studies with the brutal training required for the games.",
+                subplot: "Noi is searching for the origin of the games while trying to navigate a city that feels like it’s survived more earthquakes than hopscotch games."
+            },
+            zico: {
+                name: "Zico",
+                tag: "THE ELDEST / SENIOR",
+                bio: "Noi’s neighbor and a member of the eldest age group. Zico is colder than he looks, often appearing high-and-mighty to those younger than him. He carries the weight of a senior who has seen too much.",
+                subplot: "Maintains a facade of indifference while monitoring the newcomers closely. His true intentions remain hidden."
+            },
+            zari: {
+                name: "Zari",
+                tag: "THE OBSERVER",
+                bio: "Zico's sister. Much more approachable than her brother, though she has a peculiar disdain for sitting on floors or touching anything 'unclean' in this crumbling city.",
+                subplot: "Aiding Noi in his transition, she provides the social bridge between the groups while keeping her own survival instincts sharp."
+            },
+            falia: {
+                name: "Falia",
+                tag: "MENTIONED IN PASSING",
+                bio: "A key figure in the survival group. Though not seen in the initial arrival at Phoenix, her presence is felt through the whispers of other students.",
+                subplot: "Data Encrypted. Falia's role will be revealed as the games intensify."
+            },
+            daffy: {
+                name: "Daffy",
+                tag: "REDACTED",
+                bio: "Unknown. Daffy does not appear in the pilot episode 'Arrival in Phoenix'.",
+                subplot: "A wild card in the upcoming Game of Ashes. Watch for upcoming announcements."
+            }
+        };
+
+        function showChar(key) {
+            const data = charData[key];
+            const panel = document.getElementById('info-panel');
+            
+            // Highlight selected thumb
+            document.querySelectorAll('.char-thumb').forEach(t => t.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            // Fill data
+            document.getElementById('char-name').innerText = data.name;
+            document.getElementById('char-tag').innerText = data.tag;
+            document.getElementById('char-bio').innerText = data.bio;
+            document.getElementById('char-subplot').innerText = data.subplot;
+
+            // Show panel
+            panel.classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>

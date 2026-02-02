@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registry | Game of Ashes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --status-active: #00ff00;
+            --status-missing: #ff0000;
+            --phx-orange: #ff4500;
+            --bg-dark: #050505;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ddd;
+            font-family: 'Rajdhani', sans-serif;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            border-bottom: 2px solid #222;
+            padding-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-family: 'Special Elite', cursive;
+            font-size: 2.5rem;
+            color: var(--phx-orange);
+            letter-spacing: 5px;
+        }
+
+        /* --- REGISTRY GRID --- */
+        .registry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .id-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            position: relative;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .id-card:hover {
+            border-color: var(--phx-orange);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #222;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .student-id {
+            font-family: 'Special Elite', cursive;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            box-shadow: 0 0 5px currentColor;
+        }
+
+        .name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .role {
+            font-size: 0.9rem;
+            color: var(--phx-orange);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .stats-table {
+            width: 100%;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .stats-table td { padding: 4px 0; }
+
+        /* --- GLITCH EFFECT ON HOVER --- */
+        .hidden-lore {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--phx-orange);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            font-weight: bold;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .id-card:hover .hidden-lore {
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>PHOENIX_HIGH_ENROLLMENT</h1>
+        <p>TOTAL ENROLLED: 19 | YEAR: [REDACTED]</p>
+    </div>
+
+    <div class="registry-grid">
+        <div class="id-card">
+            <div class="card-header">
+                <span class="student-id">#PHX-019</span>
+                <span style="color: var(--status-active)"><span class="status-dot"></span>ACTIVE</span>
+            </div>
+            <div class="name">Noi Everdeen</div>
+            <div class="role">The Newcomer</div>
+            <table class="stats-table">
+                <tr><td>AGE:</td><td>16</td></tr>
+                <tr><td>ORIGIN:</td><td>External Sector</td></tr>
+                <tr><td>OBSERVATION:</td><td>Arrived at battered streets; shocked by class size.</td></tr>
+            </table>
+            <div class="hidden-lore">Is he the one to stop the games?</div>
+        </div>
+
+        <div class="id-card">
+            <div class="card-header">
+                <span class="student-id">#PHX-004</span>
+                <span style="color: var(--status-active)"><span class="status-dot"></span>ACTIVE</span>
+            </div>
+            <div class="name">Zico</div>
+            <div class="role">The Eldest</div>
+            <table class="stats-table">
+                <tr><td>AGE:</td><td>18</td></tr>
+                <tr><td>ORIGIN:</td><td>Phoenix - Sector 4</td></tr>
+                <tr><td>OBSERVATION:</td><td>Colder than he looks. High-and-mighty attitude.</td></tr>
+            </table>
+            <div class="hidden-lore">What did he see in the previous games?</div>
+        </div>
+
+        <div class="id-card">
+            <div class="card-header">
+                <span class="student-id">#PHX-005</span>
+                <span style="color: var(--status-active)"><span class="status-dot"></span>ACTIVE</span>
+            </div>
+            <div class="name">Zari</div>
+            <div class="role">The Observer</div>
+            <table class="stats-table">
+                <tr><td>AGE:</td><td>17</td></tr>
+                <tr><td>ORIGIN:</td><td>Phoenix - Sector 4</td></tr>
+                <tr><td>OBSERVATION:</td><td>Approachable. Despises sitting on floors.</td></tr>
+            </table>
+            <div class="hidden-lore">Wonders why the adults won't act.</div>
+        </div>
+
+        <div class="id-card">
+            <div class="card-header">
+                <span class="student-id">#PHX-012</span>
+                <span style="color: var(--status-active)"><span class="status-dot"></span>ACTIVE</span>
+            </div>
+            <div class="name">Falia</div>
+            <div class="role">Support Class</div>
+            <table class="stats-table">
+                <tr><td>STATUS:</td><td>Mentioned in Passing</td></tr>
+                <tr><td>BIO:</td><td>Currently off-site training.</td></tr>
+            </table>
+            <div class="hidden-lore">File incomplete. Reveal pending.</div>
+        </div>
+
+        <div class="id-card" style="opacity: 0.6; border-style: dashed;">
+            <div class="card-header">
+                <span class="student-id">#PHX-XXX</span>
+                <span style="color: #555">NOT PRESENT</span>
+            </div>
+            <div class="name">Daffy</div>
+            <div class="role">REDACTED</div>
+            <p style="font-size: 0.8rem; color: #555;">Daffy does not appear in the 'Arrival in Phoenix' file.</p>
+        </div>
+    </div>
+
+</body>
+</html>

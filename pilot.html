@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch: Arrival in Phoenix | Game of Ashes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --phx-orange: #ff4500;
+            --bg-dark: #020202;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- THEATER OVERLAY --- */
+        .theater-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 20%, #000 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* --- VIDEO SECTION --- */
+        .video-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #111;
+            border: 1px solid #333;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            transition: 0.5s;
+        }
+
+        .video-frame:hover {
+            border-color: var(--phx-orange);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.3);
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000'); /* Cinematic city placeholder */
+            background-size: cover;
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            background: var(--phx-orange);
+            clip-path: polygon(25% 20%, 25% 80%, 85% 50%);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.2);
+            background: #fff;
+        }
+
+        /* --- TEXT CONTENT --- */
+        .episode-info {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--phx-orange);
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #aaa;
+        }
+
+        .sidebar-box {
+            background: #0a0a0a;
+            padding: 2rem;
+            border-left: 3px solid var(--phx-orange);
+        }
+
+        .sidebar-box h3 {
+            font-family: 'Cinzel';
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* --- TICKER TAPE --- */
+        .ticker-wrap {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(255, 69, 0, 0.1);
+            border-top: 1px solid var(--phx-orange);
+            padding: 10px 0;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker span {
+            padding: 0 4rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--phx-orange);
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @media (max-width: 768px) {
+            .episode-info { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="theater-overlay"></div>
+
+    <main class="video-container">
+        <div class="video-frame">
+            <div class="video-placeholder">
+                <div class="play-btn"></div>
+                <p style="margin-top: 1.5rem; font-family: 'Cinzel';">START PILOT: ARRIVAL IN PHOENIX</p>
+            </div>
+            </div>
+
+        <div class="episode-info">
+            <div class="main-details">
+                <h1>Episode 0.0: Arrival</h1>
+                <p class="description">
+                    Follow Noi Everdeen as he enters the earthquake-torn Phoenix City. Discover a school environment like no other, where the student body has dwindled to just 19, and the first whispers of the infamous 'Game of Ashes' begin to surface. 
+                </p>
+                <br>
+                <p class="description">
+                    This standalone pilot introduces Zico and Zari, setting the stage for the survival trial that will change their lives forever.
+                </p>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <h3>S01 STATUS</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Main series currently in production at AzureReel Studios. Expected reveal: 2026.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>WARNING: STUDENTS MUST REMAIN ON CAMPUS AFTER DUSK</span>
+            <span>SYSTEM UPDATE: 19 BIOMETRIC SIGNALS DETECTED</span>
+            <span>PHOENIX CITY ARCHIVE: SECTOR 4 QUAKE INTENSITY LEVEL 8.2</span>
+            <span>NOI EVERDEEN: STATUS - UNTESTED</span>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Ashes | Official Anime Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Special+Elite&family=Rajdhani:wght@300;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --ash-gray: #4a4a4a;
+            --blood-red: #8b0000;
+            --phoenix-orange: #ff4500;
+            --street-dark: #0a0a0c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--street-dark);
+            color: #eee;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- GLITCH INTRO --- */
+        .glitch-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeOut 2s forwards 2.5s;
+            pointer-events: none;
+        }
+
+        .glitch-text {
+            font-family: 'Special Elite', cursive;
+            font-size: 2rem;
+            color: var(--phoenix-orange);
+            text-transform: uppercase;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, var(--street-dark)),
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=2000'); /* Placeholder for battered street */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 6rem;
+            text-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
+            margin-bottom: 0;
+            line-height: 0.8;
+        }
+
+        .subtitle {
+            font-family: 'Special Elite', cursive;
+            color: var(--ash-gray);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* --- PHOENIX CITY STATS --- */
+        .city-stats {
+            display: flex;
+            gap: 4rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem 5rem;
+            border: 1px solid #333;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat { text-align: center; }
+        .stat-val { font-family: 'Cinzel'; font-size: 2.5rem; color: var(--phoenix-orange); display: block; }
+        .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- THE GAMES SECTION --- */
+        .games-briefing {
+            padding: 8rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .warning-label {
+            color: var(--blood-red);
+            font-weight: bold;
+            letter-spacing: 5px;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .games-briefing h2 {
+            font-family: 'Cinzel';
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .brief-content {
+            border-left: 2px solid var(--phoenix-orange);
+            padding-left: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="glitch-overlay">
+        <div class="glitch-text">AUTHENTICATING PHOENIX_UPLINK...</div>
+    </div>
+
+    <section class="hero">
+        <p class="subtitle">A STORY OF SURVIVAL & STUDIES</p>
+        <h1 class="main-title">GAME <br> OF ASHES</h1>
+        
+        <div class="city-stats">
+            <div class="stat">
+                <span class="stat-val">19</span>
+                <span class="stat-label">Students Remaining</span>
+            </div>
+            <div class="stat">
+                <span class="stat-val">PHX</span>
+                <span class="stat-label">City Sector</span>
+            </div>
+            <div class="stat">
+                <span class="stat-val">16</span>
+                <span class="stat-label">Maximum Age</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="games-briefing">
+        <span class="warning-label">CRITICAL_WARNING</span>
+        <h2>The Infamous Games</h2>
+        <div class="brief-content">
+            <p>Welcome to Phoenix. The streets are broken, and the education system is deadlier than the exams. You are Noi Everdeen, and you have just arrived in a city that has seen more earthquakes than hopscotch chalk drawings.</p>
+            <br>
+            <p><strong>The Rule:</strong> Survive the games. Keep your grades up. Figure out why the adults won't stop this. You have 18 classmates. Don't lose them.</p>
+        </div>
+        
+        <div style="margin-top: 4rem; text-align: center;">
+            <a href="pilot.html" style="color: var(--phoenix-orange); text-decoration: none; font-family: 'Cinzel'; font-size: 1.5rem; border: 1px solid var(--phoenix-orange); padding: 1rem 3rem;">ENTER PHOENIX</a>
+        </div>
+    </section>
+
+</body>
+</html>

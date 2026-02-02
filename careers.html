@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Join AzureReel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azure: #00d2ff;
+            --dark-bg: #080808;
+            --card-gray: #121212;
+            --text-gray: #b0b0b0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            margin-left: 2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--azure);
+        }
+
+        /* --- CAREER HERO --- */
+        .hero {
+            padding: 6rem 4rem;
+            text-align: center;
+            background: linear-gradient(to bottom, #001f3f 0%, var(--dark-bg) 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--azure);
+            letter-spacing: 2px;
+        }
+
+        /* --- GROWTH TRACKER --- */
+        .growth-container {
+            max-width: 800px;
+            margin: -2rem auto 4rem;
+            background: var(--card-gray);
+            padding: 2rem;
+            border: 1px solid #222;
+            text-align: center;
+        }
+
+        .progress-bar-bg {
+            background: #222;
+            height: 10px;
+            width: 100%;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--azure);
+            height: 100%;
+            width: 35%; /* Adjust this as you hire more people! */
+            box-shadow: 0 0 15px var(--azure);
+            transition: 1s ease-in-out;
+        }
+
+        /* --- JOB SECTIONS --- */
+        .jobs-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dept-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--azure);
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+            margin: 3rem 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-card {
+            background: var(--card-gray);
+            margin-bottom: 1rem;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .job-card:hover {
+            border-color: var(--azure);
+            background: #1a1a1a;
+            transform: translateX(10px);
+        }
+
+        .job-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .job-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .apply-btn {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            color: var(--azure);
+            border: 1px solid var(--azure);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: var(--azure);
+            color: #000;
+        }
+
+        /* --- FOOTER --- */
+        .culture-note {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: #000;
+        }
+
+        .culture-note h2 { font-family: 'Orbitron'; margin-bottom: 1rem; }
+        .culture-note p { max-width: 700px; margin: 0 auto; color: var(--text-gray); }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="landing.html" class="logo">AZURE REEL</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="characters.html">Characters</a>
+            <a href="careers.html" class="active">Careers</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>JOIN THE 120</h1>
+        <p>REDEFINING THE ANIME FRONTIER</p>
+    </header>
+
+    <div class="growth-container">
+        <h3>Studio Expansion Status</h3>
+        <div class="progress-bar-bg">
+            <div class="progress-fill"></div>
+        </div>
+        <p>Current Phase: <strong>Scaling Operations</strong> | Target: 120 visionaries</p>
+    </div>
+
+    <main class="jobs-section">
+        
+        <div class="dept-title">
+            <h2>01. ANIMATION & 3D</h2>
+            <span>4 OPENINGS</span>
+        </div>
+
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Senior 3D Animator</h3>
+                <p>Remote / Phoenix City Style • Full Time</p>
+            </div>
+            <a href="mailto:careers@azurereel.com" class="apply-btn">APPLY_POSITION</a>
+        </div>
+
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Character Rigger</h3>
+                <p>Specializing in stylized anime movement • Contract</p>
+            </div>
+            <a href="mailto:careers@azurereel.com" class="apply-btn">APPLY_POSITION</a>
+        </div>
+
+        <div class="dept-title">
+            <h2>02. STORY & LORE</h2>
+            <span>2 OPENINGS</span>
+        </div>
+
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Script Consultant (Survival Genre)</h3>
+                <p>Focus: "Game of Ashes" world-building • Part Time</p>
+            </div>
+            <a href="mailto:careers@azurereel.com" class="apply-btn">APPLY_POSITION</a>
+        </div>
+
+    </main>
+
+    <section class="culture-note">
+        <h2>OUR ETHOS</h2>
+        <p>Founded in December with a mission to merge 3D technical precision with the heart of traditional anime. We value creators who aren't afraid of "deadly games" and strange cities.</p>
+    </section>
+
+    <footer style="text-align: center; padding: 2rem; color: #444; border-top: 1px solid #111;">
+        &copy; 2026 AZUREREEL STUDIOS // EST. DECEMBER
+    </footer>
+
+</body>
+</html>

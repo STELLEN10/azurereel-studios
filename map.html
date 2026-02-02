@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactical Map | Phoenix City</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --map-green: #00ff41;
+            --phx-orange: #ff4500;
+            --bg-dark: #020502;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--map-green);
+            font-family: 'Rajdhani', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* --- RADAR GRID BACKGROUND --- */
+        .map-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- RADAR SWEEP ANIMATION --- */
+        .radar-sweep {
+            position: absolute;
+            width: 150vh;
+            height: 150vh;
+            background: conic-gradient(from 0deg, rgba(0, 255, 65, 0.2) 0deg, transparent 90deg);
+            border-radius: 50%;
+            animation: sweep 4s linear infinite;
+            z-index: 1;
+        }
+
+        /* --- LOCATION MARKERS --- */
+        .marker {
+            position: absolute;
+            z-index: 10;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .ping {
+            width: 15px;
+            height: 15px;
+            background: var(--phx-orange);
+            border-radius: 50%;
+            margin: 0 auto 5px;
+            animation: pulse 1.5s ease-out infinite;
+        }
+
+        .marker-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            background: rgba(0,0,0,0.8);
+            padding: 2px 8px;
+            border: 1px solid var(--map-green);
+            white-space: nowrap;
+        }
+
+        /* --- DATA OVERLAY --- */
+        .data-panel {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            width: 250px;
+            background: rgba(0, 20, 0, 0.8);
+            border: 1px solid var(--map-green);
+            padding: 1rem;
+            z-index: 20;
+        }
+
+        .data-panel h2 { font-family: 'Orbitron'; font-size: 1rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--map-green); }
+        .data-line { font-size: 0.8rem; margin-bottom: 0.3rem; display: flex; justify-content: space-between; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes sweep {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7); }
+            70% { transform: scale(1.5); box-shadow: 0 0 0 10px rgba(255, 69, 0, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+        }
+
+        /* Position the markers */
+        #loc-school { top: 40%; left: 45%; }
+        #loc-sector4 { top: 60%; left: 30%; }
+        #loc-ashes { top: 25%; left: 70%; }
+    </style>
+</head>
+<body>
+
+    <div class="map-container">
+        <div class="radar-sweep"></div>
+
+        <div class="marker" id="loc-school">
+            <div class="ping"></div>
+            <div class="marker-label">PHX_HIGH [19_SIGNALS]</div>
+        </div>
+
+        <div class="marker" id="loc-sector4">
+            <div class="ping" style="background: var(--map-green);"></div>
+            <div class="marker-label">RESIDENTIAL_SEC_4</div>
+        </div>
+
+        <div class="marker" id="loc-ashes">
+            <div class="ping"></div>
+            <div class="marker-label">TRIAL_ZONE_01 [DORMANT]</div>
+        </div>
+
+        <div class="data-panel">
+            <h2>SYSTEM_STATUS</h2>
+            <div class="data-line"><span>ACTIVE_STUDENTS:</span> <span>19</span></div>
+            <div class="data-line"><span>CITY_STABILITY:</span> <span>34%</span></div>
+            <div class="data-line"><span>LAST_QUAKE:</span> <span>02:44 AM</span></div>
+            <div class="data-line" style="color: var(--phx-orange);"><span>THREAT_LEVEL:</span> <span>ELEVATED</span></div>
+        </div>
+    </div>
+
+    <script>
+        // Simple interaction: Alert info when clicking a marker
+        document.querySelectorAll('.marker').forEach(marker => {
+            marker.addEventListener('click', () => {
+                const label = marker.querySelector('.marker-label').innerText;
+                alert("ACCESSING DATA FOR: " + label + "\nScanning for life signs...");
+            });
+        });
+    </script>
+
+</body>
+</html>
