@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | AzureReel Studios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azure: #00d2ff;
+            --dark-bg: #050505;
+            --deep-blue: #001f3f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--azure); }
+
+        /* --- PARALLAX SECTIONS --- */
+        .parallax-wrapper {
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 10px;
+        }
+
+        header {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            transform-style: preserve-3d;
+            z-index: -1;
+        }
+
+        .bg-text {
+            position: absolute;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 15vw;
+            color: rgba(0, 210, 255, 0.05);
+            transform: translateZ(-10px) scale(2);
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .content-section {
+            padding: 10rem 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--dark-bg);
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--azure);
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            border: 1px solid var(--azure);
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--deep-blue), transparent);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            display: block;
+            color: var(--azure);
+        }
+
+        .stat-label {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        /* --- TIMELINE --- */
+        .timeline {
+            margin-top: 4rem;
+            border-left: 2px solid var(--azure);
+            padding-left: 2rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 0.5rem;
+            width: 15px;
+            height: 15px;
+            background: var(--azure);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--azure);
+        }
+
+        @media (max-width: 768px) {
+            .vision-grid { grid-template-columns: 1fr; }
+            nav { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="landing.html" class="logo">AZURE REEL</a>
+        <div class="nav-links">
+            <a href="about.html" class="active">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="characters.html">Characters</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="parallax-wrapper">
+        <header>
+            <div class="bg-text">OUR VISION</div>
+            <div style="text-align: center; z-index: 1;">
+                <h1 style="font-family: 'Orbitron'; font-size: 4rem;">AZURE REEL</h1>
+                <p style="letter-spacing: 5px; color: var(--azure);">EST. DECEMBER 2025</p>
+            </div>
+        </header>
+
+        <section class="content-section">
+            <div class="vision-grid">
+                <div>
+                    <h2>The Genesis</h2>
+                    <p>AzureReel was born from a desire to tell stories that bridge the gap between harsh reality and animated wonder. Founded in December after a series of minor structural changes, we emerged with a singular focus: 3D excellence.</p>
+                    <p>We believe that anime is the perfect medium to explore the complexities of survival, education, and the strange cities we inhabit.</p>
+                </div>
+                <div class="highlight-box">
+                    <span class="stat-number">120</span>
+                    <span class="stat-label">Planned Team Members</span>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">We are scaling to a full production force to ensure every frame of 'Game of Ashes' meets global standards.</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>DECEMBER: FOUNDATION</h3>
+                    <p>The studio officially opens its doors. Core leadership establishes the "Phoenix City" pipeline.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>JANUARY: THE PILOT</h3>
+                    <p>Production concludes on the standalone pilot, introducing the world to Noi and the eerie streets of Phoenix.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>CURRENT: THE 120 SCALE</h3>
+                    <p>Aggressive hiring and development for the first full season of 'Game of Ashes'.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; padding: 4rem; border-top: 1px solid #111;">
+            <p style="font-size: 0.8rem; color: #444;">&copy; 2026 AZUREREEL STUDIOS // BUILT FOR THE FUTURE</p>
+        </footer>
+    </div>
+
+</body>
+</html>
